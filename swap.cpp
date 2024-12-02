@@ -38,17 +38,3 @@ x=x -y;
 
 
 
-if (real==0){
-if (img >0)
-cout <<"+"<<img<<"j"<< endl;
-else if(img<0)
-cout <<img<< "j"<<endl;
-
-}
-else {
-if (img >0)
-cout <<real<<"+"<<img<<"j"<< endl;
-else if(img<0)
-cout <<real<<img<<"j" <<endl;
-
-}
