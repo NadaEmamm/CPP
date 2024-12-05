@@ -88,9 +88,10 @@ void pushData(employee emp[],int stackSize,stack &c1);
     cout << "Please enter the number of employees: "<<endl;
     scanf("%d", &stackSize);
     while(SIZE < stackSize ||  getchar() != '\n' || stackSize <=0){ //----------------------> size and num validation
-    cout << "Invalid input. Please enter a valid number of employees: "<<endl;
+        textcolor(RED);
+    cout <<"Invalid input. Please enter a valid number of employees: "<<endl;
+        resetBackgroundColor();
     scanf("%d", &stackSize);}
-
     stack c1(stackSize);
     while(flag==1){
     if(currentPosition == 1){
@@ -108,12 +109,17 @@ void pushData(employee emp[],int stackSize,stack &c1);
      if(ch == ENTER && currentPosition==1){ // -------------------> push data
                 cout << "\a";
                 clrscr();
-                textbackground(BLUE);
-                textcolor(WHITE);
+                //textbackground(BLUE);
+                textcolor(GREEN);
                 gotoxy(col,row-3);
                 cout << "Push" << endl;
-                resetBackgroundColor();
+               // resetBackgroundColor();
                 gotoxy(1,row);
+                cout<<"Please insert Data"<<endl;
+                gotoxy(1,row+1);
+                resetBackgroundColor();
+                cout<<"=============================="<<endl;
+                gotoxy(1,row+3);
                 pushData(insertData,stackSize, c1);
                 getch();
                 cout << "\a";
@@ -124,8 +130,8 @@ void pushData(employee emp[],int stackSize,stack &c1);
                 if(ch==ENTER && currentPosition==2){ //----------------> pop
                 cout << "\a";
                 clrscr();
-                textbackground(BLUE);
-                textcolor(WHITE);
+                //textbackground(BLUE);
+                textcolor(GREEN);
                 gotoxy(col,row-3);
                 cout << "Pop" << endl;
                 resetBackgroundColor();
@@ -150,8 +156,8 @@ void pushData(employee emp[],int stackSize,stack &c1);
                 if(ch==ENTER && currentPosition==3){  //........................... Display
                 cout << "\a";
                 clrscr();
-                textbackground(BLUE);
-                textcolor(WHITE);
+               // textbackground(BLUE);
+                textcolor(GREEN);
                 gotoxy(col,row-3);
                 cout << "Display" << endl;
                 resetBackgroundColor();
@@ -206,15 +212,19 @@ void pushData(employee emp[],int stackSize,stack &c1);
     }}}
     cout << "Please insert the ID: ";
     scanf("%d",&emp[i].id);
-    while(getchar() != '\n'){ //----------------------> size and num validation
+    while(getchar() != '\n' || emp[i].id <=0){ //----------------------> size and num validation
+    textcolor(RED);
     cout << "Invalid input. Please insert the ID: "<<endl;
+    resetBackgroundColor();
     scanf("%d",&emp[i].id);
     }
     //----------------------------------------------------------------//
     cout << "Please enter the salary of the employee: ";
     scanf("%d",&emp[i].salary);
-    while( getchar() != '\n'){ //----------------------> num validation
-    cout << "Invalid input. Please enter the salary of the employee: ";
+    while( getchar() != '\n'|| emp[i].salary <=0){ //----------------------> num validation
+    textcolor(RED);
+   cout << "Invalid input. Please enter the salary of the employee: ";
+    resetBackgroundColor();
     scanf("%d",&emp[i].salary);
     };
 
@@ -230,8 +240,7 @@ void pushData(employee emp[],int stackSize,stack &c1);
     //push
             void bluePush(){
                 clrscr();
-                textbackground(BLUE);
-                textcolor(WHITE);
+                textcolor(GREEN);
                 gotoxy(col,row);
                cout << "Push" << endl;
                 resetBackgroundColor();
@@ -247,9 +256,9 @@ void pushData(employee emp[],int stackSize,stack &c1);
 
                 clrscr();
                 gotoxy(col,row);
-                  cout << "Push" << endl;
-                textbackground(BLUE);
-                textcolor(WHITE);
+                cout << "Push" << endl;
+               // textbackground(BLUE);
+                textcolor(GREEN);
                 gotoxy(col,row+3);
               cout << "Pop" << endl;
                 resetBackgroundColor();
@@ -267,8 +276,8 @@ void pushData(employee emp[],int stackSize,stack &c1);
                 resetBackgroundColor();
                 gotoxy(col,row+3);
                 cout << "Pop" << endl;
-                textbackground(BLUE);
-                textcolor(WHITE);
+               // textbackground(BLUE);
+                textcolor(GREEN);
                 gotoxy(col,row +6);
                 cout << "Display" << endl;
                 resetBackgroundColor();

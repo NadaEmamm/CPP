@@ -86,27 +86,74 @@ public:
 
 }
 
+complex_number operator+(int x){
+complex_number temp;
+temp.real = this -> real +x;
+temp .img = this -> img +x;
+return temp;
+};
+complex_number operator-(int x){
+complex_number temp;
+temp.real = this -> real -x;
+temp .img = this -> img -x;
+return temp;
+};
+complex_number operator++(){
+this -> real++;
+this -> img++;
+return *this;
+};
+complex_number operator++(int x){
+complex_number temp ;
+temp.real = this -> real ;
+temp .img = this -> img;
+this -> real++;
+this -> img++;
+return temp;
+
+};
+
+
+
 ~complex_number(){
- cout <<"Final Destination"<<endl;
 };
 };
+
+complex_number operator+(int x,complex_number c);
+complex_number operator-(int x,complex_number c);
+
 
     int main()
 {
     complex_number c1,c2,c3,c4,c5;
     c1.set_real(1);
     c1.set_img(10);
+    c3=c1++;
+    c1.display();
     c2.set_real(20);
     c2.set_img(10);
-    c1.display();
-    c2.display();
-    c3=c1.add(c2);
-    c3.display();
-    c4=c1.subtract(c2);
-    c4.display();
-    c5.set_complex(100,150);
-    c5.display();
+    //c3 = c1 -10;
+   // c3.display();
+   //c3 =10-c1;
+   c3.display();
+
 
         return 0;
 }
+complex_number operator+(int x,complex_number c){
+complex_number temp;
+temp.set_real(c.get_real()+x);
+temp .set_img(c.get_img()+x);
+return temp;
+
+}
+complex_number operator-(int x,complex_number c){
+complex_number temp;
+temp.set_real(x-c.get_real());
+temp .set_img(x-c.get_img());
+return temp;
+
+}
+
+
 
