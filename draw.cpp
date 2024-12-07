@@ -1,8 +1,18 @@
 #include <iostream>
 #include <graphics.h>
+#define BLACK  0
+#define BLUE  1
+#define GREEN  2
+#define CYAN  3
+#define RED  4
+#define MAGENTA 5
+#define BROWN  6
+#define LIGHTGRAY  7
+
+
 using namespace std;
 
-class Point {
+class Point {   //==============================================POINT
 private:
     int x, y;
 public:
@@ -13,48 +23,64 @@ public:
     int getY() { return y; }
 };
 
-class Line {
+class Shape { //============================================= SHAPE
+protected:
+int color;
+public:
+Shape(){
+color=BLACK;
+
+}
+Shape(int x){
+color =x;
+
+};
+};
+
+
+class Line :public Shape{ //==========================================LINE
 private:
     Point start;
     Point end;
 public:
-    Line() : start(), end() {}
-    Line(int x1, int y1, int x2, int y2) : start(x1, y1), end(x2, y2) {}
+    Line() : Shape (BLACK) , start(0,0), end(0,0) {}
+    Line(int x1, int y1, int x2, int y2,int color) : Shape (color) , start(x1, y1), end(x2, y2) {}
 
     void draw() {
-        Line(start.getX(), start.getY(), end.getX(), end.getY());
+         setcolor(color);
+        line(start.getX(), start.getY(), end.getX(), end.getY());
     }
 };
 
-class Rect {
+class Rect :public Shape{ //============================================== RECT
 private:
-    Point ul; // Upper-left point
-    Point lr; // Lower-right point
+    Point ul;
+    Point lr;
 public:
-    Rect() : ul(), lr() {}
-    Rect(int x1, int y1, int x2, int y2) : ul(x1, y1), lr(x2, y2) {}
+    Rect() : Shape (BLACK) , ul(0,0), lr(0,0) {}
+    Rect(int x1, int y1, int x2, int y2,int color) : Shape (color), ul(x1, y1), lr(x2, y2) {}
 
     void draw() {
-        // Placeholder for drawing a rectangle
+        setcolor(color);
         rectangle(ul.getX(), ul.getY(), lr.getX(), lr.getY());
     }
 };
 
-class Circle {
+class Circle :public Shape{ //============================================ CIRCLE
 private:
     Point center;
     int radius;
 public:
-    Circle() : center(), radius(0) {}
-    Circle(int m, int n, int r) : center(m, n), radius(r) {}
+    Circle() : Shape (BLACK), center(0,0), radius(0) {}
+    Circle(int m, int n, int r,int color) : Shape (color), center(m, n), radius(r) {}
 
     void draw() {
-        // Placeholder for drawing a circle
+        setcolor(color);
         circle(center.getX(), center.getY(), radius);
     }
 };
 
-class Picture {
+class Picture { //=====================================================PICTURE
 private:
     int cNum, rNum, lNum;
     Circle* pCircles;
@@ -99,9 +125,9 @@ int gd = DETECT, gm;
     // Graphic Mode
     Picture myPic;
 
-    Circle cArr[3] = { Circle(50, 50, 50), Circle(200, 100, 100), Circle(420, 50, 30) };
-    Rect rArr[2] = { Rect(30, 40, 170, 100), Rect(420, 50, 500, 300) };
-    Line lArr[2] = { Line(420, 50, 300, 300), Line(40, 500, 500, 400) };
+    Circle cArr[3] = { Circle(50, 50, 50,RED), Circle(200, 100, 100,CYAN), Circle(420, 50, 30,RED) };
+    Rect rArr[2] = { Rect(30, 40, 170, 100,RED), Rect(420, 50, 500, 300,RED) };
+    Line lArr[2] = { Line(420, 50, 300, 300,LIGHTGRAY), Line(40, 500, 500, 400,BLUE) };
 
     myPic.setCircles(3, cArr);
     myPic.setRects(2, rArr);
