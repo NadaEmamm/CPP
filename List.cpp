@@ -10,48 +10,51 @@
      public:
      new_list(){
      this -> elements =0;
-     size =5;
+     size =2;
      ptr = new int [size];
      }
 //============================================================//
-     void reallocate(int x){
-      int oldSize = this ->size;
+     void reallocate(){
+      int oldSize = size;
       int* temp = new int[oldSize];
         for (int i = 0; i < oldSize; i++) {
-    temp[i] = this->ptr[i];
+        temp[i] = ptr[i];
 };
        delete []ptr;
-       this -> size = x * 5;
+       size = size * 5;
        ptr = new int [size];
        for(int i=0; i<oldSize;i++){
-        this->ptr[i]=temp[i];
+        ptr[i]=temp[i];
 };
          delete []temp;
 }
 //======================================================================//
-         int push(int data){
-        if(elements == size)
-        reallocate(size);
+        void push(int data){
+        if(elements == size){
+        reallocate();
         ptr[elements]=data;
-        elements++;
-        return 1;
+        elements++;}
+        else{
+        ptr[elements]=data;
+        elements++;}
+
 };
 //=================================================================//
     int pop() {
     if (elements == 0) {
    throw runtime_error ("The stack is empty");
 }
-    int data;
+    else {int data;
       data = ptr[elements-1];
            elements--;
-           return data;
+           return data;};
 }
 
 //======================================================================//
      void display(){
      if(elements==0)
      cout<<"Stack is empty"<<endl;
-     for(int i=1;i<=size;i++){
+     for(int i=0;i<elements;i++){
      cout<<ptr[i]<<endl;
      cout<<"============================================="<<endl;
      };
@@ -72,7 +75,9 @@ test.push(3);
 test.push(4);
 test.push(5);
 test.push(6);
+test.push(6);
 
+test.display();
  try{
     data=test.pop();
     cout<<data<<endl;
@@ -87,6 +92,8 @@ test.push(6);
     data=test.pop();
     cout<<data<<endl;
       data=test.pop();
+    cout<<data<<endl;
+         data=test.pop();
     cout<<data<<endl;
      }
 catch(const runtime_error& e){

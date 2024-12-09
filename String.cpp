@@ -10,7 +10,7 @@
 //===========================================================================// Resived string
     public:
     newString(char*s){
-    size = strlen(s);
+    size = newStrlen(s);
     ptr = new char [size +1];
      for(int i=0; i<=size;i++){
      this->ptr[i]=s[i];

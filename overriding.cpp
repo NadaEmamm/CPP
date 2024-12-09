@@ -37,7 +37,7 @@ int z;
 public:
 Derived ():Base(){
 cout <<"Drived non parameterized constractor \n";
-//z=1;
+z=0;
 }
 Derived(int x,int y,int z) :Base (x,y){
 this ->z =z;

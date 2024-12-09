@@ -34,7 +34,7 @@ class stack{
     values = new employee [size];
     counter++;
 };
-    int push(employee data){
+    int push(employee &data){
     if(t == size-1)
     return 0;
     t++;
@@ -80,6 +80,7 @@ void pushData(employee emp[],int stackSize,stack &c1);
      int flag =1;
     int currentPosition =1;
     employee dataShow [SIZE];
+
     employee insertData [SIZE] ={0};
     int j=0;
     int stackSize;
@@ -92,7 +93,10 @@ void pushData(employee emp[],int stackSize,stack &c1);
     cout <<"Invalid input. Please enter a valid number of employees: "<<endl;
         resetBackgroundColor();
     scanf("%d", &stackSize);}
-    stack c1(stackSize);
+
+
+    stack c1(stackSize); //============================================== c1
+
     while(flag==1){
     if(currentPosition == 1){
     bluePush ();
@@ -195,18 +199,18 @@ void pushData(employee emp[],int stackSize,stack &c1);
         };
     //======================================================================================//
     void pushData(employee emp[],int stackSize ,stack &c1){
-    char ch;
+    char ch=0;
     int currentPosition =1;
     for(int i=0; i<stackSize;i++){
     ch =0;
-     int valid = 0;
+    int valid = 0;
     while (valid == 0) {
     cout << "Please enter a valid name for the employee: ";
-    scanf("%s", emp[i].name);
+    scanf("%[^\n]", emp[i].name);
     valid = 1;
-                for (int k = 0; emp[i].name[k] != '\0'; k++) {
-                if (!isalpha(emp[i].name[k])) {
-                    valid = 0;
+    for (int k = 0; emp[i].name[k] != '\0'; k++) {
+    if (!isalpha(emp[i].name[k] ) &&  emp[i].name[k] != ' ' ) {
+     valid = 0;
 
         break;
     }}}
